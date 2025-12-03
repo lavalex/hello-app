@@ -1,6 +1,6 @@
 const http = require("http");
 const port = process.env.PORT || 8080;
-const version =  "5";
+const version =  "6";
 
 // Capture deployment/start time
 const startTime = new Date();
