@@ -21,7 +21,7 @@ jobs:
 
     - name: Login to Quay
       run: |
-        buildah login ${{ secrets.REGISTRY_URL }} \
+        buildah login ${{ vars.REGISTRY_URL }} \
           -u "${{ secrets.REGISTRY_USERNAME }}" \
           -p "${{ secrets.REGISTRY_PASSWORD }}"
 
@@ -30,11 +30,11 @@ jobs:
 
     - name: Build image
       run: |
-        buildah bud -t "${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_REPO }}:${IMAGE_TAG}" .
+        buildah bud -t "${{ vars.REGISTRY_URL }}/${{ vars.REGISTRY_REPO }}:${IMAGE_TAG}" .
 
     - name: Push image
       run: |
-        buildah push "${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_REPO }}:${IMAGE_TAG}"
+        buildah push "${{ vars.REGISTRY_URL }}/${{ vars.REGISTRY_REPO }}:${IMAGE_TAG}"
 
     - name: Checkout GitOps repo
       uses: actions/checkout@v4
@@ -45,7 +45,7 @@ jobs:
 
     - name: Update deployment image tag
       run: |
-        sed -i "s|image:.*|image: ${{ secrets.REGISTRY_URL }}/${{ secrets.REGISTRY_REPO }}:${IMAGE_TAG}|g" gitops/deployment.yaml
+        sed -i "s|image:.*|image: ${{ vars.REGISTRY_URL }}/${{ vars.REGISTRY_REPO }}:${IMAGE_TAG}|g" gitops/deployment.yaml
 
     - name: Commit and push changes
       working-directory: gitops
