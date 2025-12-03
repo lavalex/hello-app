@@ -1,3 +1,6 @@
+const version = "5";
+
+
 const http = require("http");
 const port = process.env.PORT || 8080;
 
@@ -28,7 +31,7 @@ http.createServer((req, res) => {
         </head>
         <body>
           <h1>🚀 Hello from OpenShift!</h1>
-          <p>This is <strong>version 3</strong> of the demo app 🎉</p>
+          <p>This is <strong>version ${version}</strong> of the demo app 🎉</p>
           <p>⏱ Auto-refreshing every 10 seconds</p>
           <p>Current server time: <strong>${new Date().toLocaleString()}</strong></p>
           <hr />
