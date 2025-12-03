@@ -9,10 +9,13 @@ http.createServer((req, res) => {
   log(`${req.method} ${req.url}`);
 
   if (req.url === "/") {
-    res.writeHead(200, { "Content-Type": "text/html" });
+    res.writeHead(200, {
+      "Content-Type": "text/html; charset=utf-8"
+    });
     res.end(`
       <html>
         <head>
+          <meta charset="UTF-8">
           <title>OpenShift App</title>
           <meta http-equiv="refresh" content="10">
           <style>
@@ -41,22 +44,22 @@ http.createServer((req, res) => {
   }
 
   else if (req.url === "/time") {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(JSON.stringify({ serverTime: new Date().toISOString() }));
   }
 
   else if (req.url === "/health") {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(JSON.stringify({ status: "ok" }));
   }
 
   else if (req.url === "/env") {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(JSON.stringify(process.env, null, 2));
   }
 
   else {
-    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     res.end("404 - Not found\n");
   }
 
