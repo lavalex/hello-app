@@ -29,7 +29,7 @@ http.createServer((req, res) => {
           </style>
         </head>
         <body>
-          <h1>🚀 Hello from Misha !</h1>
+          <h1>🚀 Hello from Openshift !</h1>
           <p>This is <strong>version ${version}</strong> of the demo app 🎉</p>
           <p>⏱ Auto-refreshing every 10 seconds</p>
           <p>Current server time: <strong>${new Date().toLocaleString()}</strong></p>
