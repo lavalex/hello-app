@@ -1,0 +1,1 @@
+gh run list --status completed --limit 1000 --json databaseId   --jq '.[].databaseId' | xargs -n 1 gh run delete
