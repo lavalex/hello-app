@@ -1,6 +1,6 @@
 const http = require("http");
 const port = process.env.PORT || 8080;
-const version =  "15";
+const version =  "16";
 
 // Capture deployment/start time
 const startTime = new Date();
@@ -29,7 +29,7 @@ http.createServer((req, res) => {
           </style>
         </head>
         <body>
-          <h1>🚀 Hello from Openshift !</h1>
+          <h1>🚀 Hello to Meitav from Openshift !</h1>
           <p>This is <strong>version ${version}</strong> of the demo app 🎉</p>
           <p>⏱ Auto-refreshing every 10 seconds</p>
           <p>Current server time: <strong>${new Date().toLocaleString()}</strong></p>
